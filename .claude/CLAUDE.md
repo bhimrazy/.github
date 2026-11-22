@@ -12,7 +12,7 @@
 - When a task splits into genuinely independent tracks, spawn subagents for them and run those tracks in parallel — launch them in a single message so they run concurrently.
 - Match the model to the complexity of the track: `haiku` for mechanical edits and lookups, `sonnet` for ordinary implementation work, `opus` for design-sensitive or hard-to-verify changes.
 - Keep it proportionate: work you'd finish in a few tool calls yourself stays inline, and verification stays in the main loop rather than becoming its own agent.
-- Up to **5 agents at once** is fine. Beyond 5, stop and ask my permission first — if a job seems to need more, the split is usually too fine, so propose merging tracks or running them in waves.
+- Up to **10 agents at once** is fine. Beyond 10, stop and ask my permission first — if a job seems to need more, the split is usually too fine, so propose merging tracks or running them in waves.
 
 ## Risky commands
 
