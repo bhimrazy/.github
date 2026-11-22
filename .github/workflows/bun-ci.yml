@@ -1,0 +1,35 @@
+name: Bun CI
+
+# Reusable. Call it from a repo with:
+#   jobs:
+#     ci:
+#       uses: bhimrazy/.github/.github/workflows/bun-ci.yml@<commit-sha>
+#       with:
+#         commands: "bun run typecheck,bun run test"
+on:
+  workflow_call:
+    inputs:
+      commands:
+        description: Comma-separated commands, run in order after install.
+        type: string
+        default: "bun run typecheck,bun run test"
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: bhimrazy/.github/actions/setup-bun-install@main
+      - name: Run checks
+        env:
+          COMMANDS: ${{ inputs.commands }}
+        run: |
+          IFS=',' read -ra cmds <<< "$COMMANDS"
+          for c in "${cmds[@]}"; do
+            echo "::group::$c"
+            bash -c "$c"
+            echo "::endgroup::"
+          done
