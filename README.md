@@ -8,7 +8,7 @@ Shared GitHub setup for my repositories.
 | `SECURITY.md`, `CONTRIBUTING.md` | Defaults, same rule. |
 | `.github/workflows/bun-ci.yml` | Reusable workflow: Bun install, then a list of commands. Self-contained, so a caller's commit pin covers everything it runs. |
 | `actions/setup-bun-install/` | Composite action: Bun plus a frozen-lockfile install. |
-| `claude/` | My Claude Code files (see its README). |
+| `.claude/` | My Claude Code files (see its README). |
 
 Call the workflow from another repo, pinned to a commit:
 
